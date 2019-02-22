@@ -18,23 +18,26 @@ public class StudentEntity implements Serializable{
         return stuIn;
     }
 
-    public void setStuIn(String stuIn) {
+    public StudentEntity setStuIn(String stuIn) {
         this.stuIn = stuIn;
+        return this;
     }
 
     public String getStuName() {
         return stuName;
     }
 
-    public void setStuName(String stuName) {
+    public StudentEntity setStuName(String stuName) {
         this.stuName = stuName;
+        return this;
     }
 
     public String getStuClass() {
         return stuClass;
     }
 
-    public void setStuClass(String stuClass) {
+    public StudentEntity setStuClass(String stuClass) {
         this.stuClass = stuClass;
+        return this;
     }
 }

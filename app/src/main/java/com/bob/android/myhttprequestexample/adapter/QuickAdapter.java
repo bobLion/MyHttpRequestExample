@@ -2,8 +2,10 @@ package com.bob.android.myhttprequestexample.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +17,7 @@ import java.util.List;
 public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickViewHolder> {
     private List<T> mDatas;
     private Context mContext;
+    private OnItemClickListener onItemClickListener;
 
     public QuickAdapter(List<T> datas,Context context){
         this.mDatas = datas;
@@ -40,6 +43,37 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickViewHold
 
     public abstract void convert(QuickViewHolder holder, T data, int position);
 
+
+    public interface OnItemClickListener{
+        void OnItemClick(View view,int position);
+        void OnItemLongClick(View view,int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.onItemClickListener  = listener;
+    }
+
+
+    public void updateData(ArrayList<T> data){
+        this.mDatas = data;
+        notifyDataSetChanged();
+    }
+
+    public void adddNewItem(T data){
+        if(mDatas == null){
+            mDatas = new ArrayList<>();
+        }
+        mDatas.add(0,data);
+        notifyItemChanged(0);
+    }
+
+    public void deleteItem(int position){
+        if(mDatas == null || mDatas.isEmpty()){
+            return;
+        }
+        mDatas.remove(position);
+        notifyItemRemoved(position);
+    }
 
 
 }

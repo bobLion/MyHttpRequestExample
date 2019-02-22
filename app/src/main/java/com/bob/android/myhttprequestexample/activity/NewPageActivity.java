@@ -9,11 +9,14 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bob.android.myhttprequestexample.R;
+import com.bob.android.myhttprequestexample.adapter.NormalRecycleViewAdapter;
 import com.bob.android.myhttprequestexample.adapter.QuickAdapter;
 import com.bob.android.myhttprequestexample.adapter.QuickViewHolder;
 import com.bob.android.myhttprequestexample.entity.StudentEntity;
@@ -35,6 +38,7 @@ public class NewPageActivity extends Activity {
 
     Context mContext;
     private QuickAdapter mAdapter;
+    private NormalRecycleViewAdapter normalRecycleViewAdapter;
     private List<StudentEntity> studentEntityList = new ArrayList<>();
     private final int TYPE_1 = 0001;
     private final int TYPE_2 = 0002;
@@ -52,9 +56,16 @@ public class NewPageActivity extends Activity {
 //        mImgPage.setImageBitmap(bitmap);
         Glide.with(this).load(R.mipmap.img).into(mImgPage);
         initView();
+        mReView.setLayoutManager(new LinearLayoutManager(this));
+        mReView.setAdapter(normalRecycleViewAdapter);
     }
 
     private void initView() {
+        for(int i = 0;i<20;i++){
+            StudentEntity stu = new StudentEntity();
+            stu.setStuClass("1991").setStuIn("100"+i).setStuName("Alex"+i);
+            studentEntityList.add(stu);
+        }
        /* mAdapter = new QuickAdapter<StudentEntity>(studentEntityList,mContext) {
             @Override
             public int getLayoutId(int viewType) {
@@ -68,7 +79,7 @@ public class NewPageActivity extends Activity {
             }
         };*/
 
-       mAdapter = new QuickAdapter<StudentEntity>(studentEntityList,mContext) {
+       /*mAdapter = new QuickAdapter<StudentEntity>(studentEntityList,mContext) {
            @Override
            public int getLayoutId(int viewType) {
                switch (viewType){
@@ -102,9 +113,20 @@ public class NewPageActivity extends Activity {
                         break;
                 }
            }
+       };*/
 
+        normalRecycleViewAdapter = new NormalRecycleViewAdapter(mContext,studentEntityList);
+        normalRecycleViewAdapter.setOnItemClickListener(new NormalRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(mContext,"点击了" + position,Toast.LENGTH_LONG).show();
+            }
 
-       };
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(mContext,"长按了" +  position,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @OnClick(R.id.btn_back)
