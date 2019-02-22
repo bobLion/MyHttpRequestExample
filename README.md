@@ -1,0 +1,2 @@
+# MyHttpRequestExample
+实现了一个网络请求框架以及RecycelView的简单实现以及万能的RecycleView 的 Adapter；
