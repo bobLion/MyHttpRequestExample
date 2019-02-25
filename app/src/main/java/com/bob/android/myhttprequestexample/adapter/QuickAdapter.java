@@ -19,6 +19,7 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickViewHold
     private Context mContext;
     private OnItemClickListener onItemClickListener;
 
+
     public QuickAdapter(List<T> datas,Context context){
         this.mDatas = datas;
         this.mContext = context;
@@ -74,6 +75,8 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickViewHold
         mDatas.remove(position);
         notifyItemRemoved(position);
     }
+
+
 
 
 }

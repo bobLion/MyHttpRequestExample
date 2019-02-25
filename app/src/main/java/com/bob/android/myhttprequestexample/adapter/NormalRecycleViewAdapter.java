@@ -91,7 +91,6 @@ public class NormalRecycleViewAdapter extends RecyclerView.Adapter<NormalRecycle
     }
 
 
-
     public interface OnItemClickListener{
         void onItemClick(View view,int position);
         void onItemLongClick(View view,int position);
