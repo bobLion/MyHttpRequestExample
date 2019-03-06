@@ -20,6 +20,7 @@ import com.bob.android.myhttprequestexample.adapter.QuickAdapter;
 import com.bob.android.myhttprequestexample.adapter.QuickAdapterWrapper;
 import com.bob.android.myhttprequestexample.entity.StudentEntity;
 import com.bob.android.myhttprequestexample.view.MDGridDividerDecoration;
+import com.bob.android.myhttprequestexample.view.SwipeRecycleView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class NewPageActivity extends Activity {
     @BindView(R.id.img_page)
     ImageView mImgPage;
     @BindView(R.id.re_view)
-    RecyclerView mReView;
+    SwipeRecycleView mReView;
 
     Context mContext;
     private QuickAdapter mAdapter;

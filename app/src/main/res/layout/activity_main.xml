@@ -19,4 +19,18 @@
         android:layout_height="wrap_content"
         android:text="点击"/>
 
+    <Button
+        android:id="@+id/btn_connect_mysql"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="连接Mysql数据库"
+        />
+
+    <TextView
+        android:id="@+id/tv_get_mysql_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+
 </LinearLayout>
